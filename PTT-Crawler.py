@@ -33,14 +33,13 @@ def save_csv_page():
     submit = pd.DataFrame(data = list_data)
     #submit['href'] = list_data['link'].values
     #submit['title'] = list_data['title.text'].values
-    submit.to_csv('D:/Desktop/WNEC/crawler_data/0.csv', encoding='utf_8_sig',index=False)
+    submit.to_csv('D:/Desktop/WNEC/PTT_Crawler/crawler_data/index.csv', encoding='utf_8_sig',index=False)
     print("save index to disk")
 
 def save_csv_content_page(inner_data,all_Id):
     submit = pd.DataFrame(data = inner_data)
-    submit.to_csv('D:/Desktop/WNEC/crawler_data/'+str(all_Id)+'.csv', encoding='utf_8_sig',index=False,header=False)
+    submit.to_csv('D:/Desktop/WNEC/PTT_Crawler/crawler_data/'+'ID'+str(all_Id)+'.csv', encoding='utf_8_sig',index=False,header=False)
     print("save page content to disk")
-
 ##############################################################################
     
     
@@ -92,8 +91,6 @@ def context_crawler(link,all_Id):
     all_Id +=1
 
     save_csv_content_page(list_data_inner_page,all_Id)
-    
-    
     
     
     return all_Id,ip,content,up_push,down_push,no_push
@@ -227,5 +224,5 @@ if __name__=='__main__':
     all_Id = 0
     #get_index("Gossiping",all_Id)
     main("Gossiping",39046,39047,all_Id)
-    save_csv_page()
-    combine_csv()
+    #save_csv_page()
+    #combine_csv()
